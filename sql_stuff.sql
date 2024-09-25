@@ -15,3 +15,5 @@ JOIN (
 
 -- I think this the code I will need to run, 
 -- Next, I need to format the data from the excel sheet with python to be my code for SQL
+
+-- Note for later, It might be useful if I could access these SQL databases from terminal, rahter than using Microsoft SQL Server
