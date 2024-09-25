@@ -14,4 +14,7 @@ for index, value in mint_profile_id.items():
 
 new_list = list[:-2]
 print(new_list)
-
+[
+  [1-1-2023,1234],
+  [12-25-2022,6789]
+]
