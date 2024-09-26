@@ -18,11 +18,13 @@ JOIN (
 -- Note for later, It might be useful if I could access these SQL databases from terminal, rahter than using Microsoft SQL Server
 
 --------------------------------------------------------------------------------------------------------------
-list_v2 code
+list_v4 code
 --------------------------------------------------------------------------------------------------------------
 
-SELECT m.STARTYEAR, m.STARTDATE, m.CITY AS CityMetIn, m.STPROV, m.HQHOTEL, m.PEAKRMSRES, m.REGATTEND, m.REC_ID, m.MtgID, md.MeetingYear, m.deleted, m.LeadCreateDate, m.DateDefinite, m.CanceledDate, m.PoolSource
-FROM [Mint2].[dbo].[Mtg_Log] AS m
+SELECT a.NAME AS OrgName,p.MTGNAME AS ProfileName, o.STARTYEAR, o.STARTDATE, o.CITY AS CityMetIn, o.STPROV, o.HQHOTEL, o.PEAKRMSRES, o.REGATTEND, o.REC_ID AS LeadID, d.MtgID AS DenverLostProfileMintID, d.MeetingYear AS DenverLostLeadYear, o.deleted, o.LeadCreateDate, o.DateDefinite, o.CanceledDate, o.PoolSource
+FROM [Mint2].[dbo].[Mtg_Log] AS o
+JOIN Mint2.dbo.Mtg AS p ON o.MtgID = p.REC_ID
+JOIN Mint2.dbo.Org AS a ON p.OrgID = a.REC_ID
 JOIN (
     SELECT
     CAST('2023' AS DATE) AS MeetingYear, 5580 AS MtgID
@@ -31,6 +33,6 @@ SELECT
     CAST('2026' AS DATE) AS MeetingYear, 110693 AS MtgID
     -- I added in all the code from python script ----
 
-) AS md ON m.MtgID = md.MtgID AND m.STARTYEAR = md.MeetingYear;
-
+) AS d ON o.MtgID = d.MtgID AND o.STARTYEAR = d.MeetingYear
+WHERE o.deleted = '0'
 
