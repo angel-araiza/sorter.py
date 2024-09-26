@@ -15,5 +15,22 @@ JOIN (
 
 -- I think this the code I will need to run, 
 -- Next, I need to format the data from the excel sheet with python to be my code for SQL
-
 -- Note for later, It might be useful if I could access these SQL databases from terminal, rahter than using Microsoft SQL Server
+
+--------------------------------------------------------------------------------------------------------------
+list_v2 code
+--------------------------------------------------------------------------------------------------------------
+
+SELECT m.STARTYEAR, m.STARTDATE, m.CITY AS CityMetIn, m.STPROV, m.HQHOTEL, m.PEAKRMSRES, m.REGATTEND, m.REC_ID, m.MtgID, md.MeetingYear, m.deleted, m.LeadCreateDate, m.DateDefinite, m.CanceledDate, m.PoolSource
+FROM [Mint2].[dbo].[Mtg_Log] AS m
+JOIN (
+    SELECT
+    CAST('2023' AS DATE) AS MeetingYear, 5580 AS MtgID
+UNION ALL
+SELECT
+    CAST('2026' AS DATE) AS MeetingYear, 110693 AS MtgID
+    -- I added in all the code from python script ----
+
+) AS md ON m.MtgID = md.MtgID AND m.STARTYEAR = md.MeetingYear;
+
+

@@ -19,7 +19,7 @@ for index, row in df.iterrows():
   # Check if both values are not NaN
   if pd.notna(mint_id) and pd.notna(meeting_date):
     # Format the string and add it to the list
-    formatted_rows.append(f"SELECT\n    CAST('{meeting_date.strftime('%Y-%m-%d')}' AS DATE) AS MeetingDate, {int(mint_id)} AS MtgID\nUNION ALL\n")
+    formatted_rows.append(f"SELECT\n    CAST('{meeting_date.strftime('%Y')}' AS DATE) AS MeetingYear, {int(mint_id)} AS MtgID\nUNION ALL\n")
 
 # NEXT TASK :: update the meeting date to be off of year, so that you can compare that field to the start year that is listed in MtgLog within the MINT Database
 
