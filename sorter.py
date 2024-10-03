@@ -21,7 +21,6 @@ for index, row in df.iterrows():
     # Format the string and add it to the list
     formatted_rows.append(f"SELECT\n    CAST('{meeting_date.strftime('%Y')}' AS DATE) AS MeetingYear, {int(mint_id)} AS MtgID\nUNION ALL\n")
 
-# NEXT TASK :: update the meeting date to be off of year, so that you can compare that field to the start year that is listed in MtgLog within the MINT Database
 
 
 # Join the list into a single string
