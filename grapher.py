@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 
 # Load the Excel file
-file_path = 'list_v5.xlsx'
+file_path = 'list_v6.xlsx'
 df = pd.read_excel(file_path)
 
 # Counts occurences of each category
@@ -12,7 +12,7 @@ category_counts = df['CityMetIn'].value_counts().reset_index()
 category_counts.columns = ['CityMetIn', 'Count']
 
 
-kc_df = pd.read_excel('list_kc.xlsx')
+kc_df = pd.read_excel('list_kc2.xlsx')
 ms_counts = kc_df['KeyClassification'].value_counts().reset_index()
 ms_counts.columns = ['KeyClassification', 'Count']
 
@@ -28,6 +28,7 @@ plt.ylabel('Count')
 plt.title('Top 15 Cities Where Lost Leads Held Meetings (2023 Onwards)')
 plt.xticks(rotation=45)
 plt.tight_layout()
+plt.savefig('charts/cities_met_in.png')
 
 
 #Bar chart for month distrubution of lost leads
@@ -41,6 +42,7 @@ plt.ylabel('Count')
 plt.title('Monthly Distribution of Lost Leads (2023 Onwards)')
 plt.xticks(ticks=range(1, 13), labels=months, rotation=45)
 plt.tight_layout()
+plt.savefig('charts/month_distribution.png')
 
 # Pie Chart
 plt.figure(figsize=(14,8))
@@ -52,6 +54,7 @@ plt.pie(ms_counts['Count'].head(10),
           textprops={'fontsize':8})
 plt.title('Market Segment Frequencies of Lost Leads (2023 Onwards)')
 plt.tight_layout()
+plt.savefig('charts/market_segment_piechart.png')
 
 
 
@@ -63,10 +66,11 @@ plt.xlabel('Peak Rooms Reserved')
 plt.ylabel('Amount')
 plt.title('Lost Leads Grouped by Peak Rooms Reserved (2023 Onward)')
 plt.tight_layout()
-plt.show()
+plt.savefig('charts/peak_rooms_histogram.png')
 
 """
-How could I get the thousand comma added to my x label?"""
+How could I get the thousand comma added to my x label?
+"""
 
 
 

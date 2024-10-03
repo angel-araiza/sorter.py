@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load the Excel file
-file_path = "denver_data.xlsx"
+file_path = "denver_data_cc.xlsx"
 df = pd.read_excel(file_path, engine ='openpyxl')
 
 #Extract the columns
